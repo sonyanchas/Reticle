@@ -9,6 +9,7 @@ public class Controller : MonoBehaviour
     [SerializeField] float MinX;
     [SerializeField] float MaxX;
     [SerializeField] float Speed;
+    [SerializeField] GameObject explosionPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -40,11 +41,9 @@ public class Controller : MonoBehaviour
         {
             transform.position = new Vector3(MinX, transform.position.y, 0f);
         }
-        if (Input.GetButton("Fire1") == true)
+        if (Input.GetButtonDown("Fire1") == true)
             {
-            AudioSource audioSource;
-            audioSource = GetComponent<AudioSource>();
-            audioSource.Play();
+            Instantiate(explosionPrefab, transform.position, transform.rotation);
         }
     }
     }
